@@ -44,18 +44,19 @@ void regulator_TRANS(int DROGA) {  		//regulacja po³o¿enia input w cm
 }
 
 void DYFERENCJAL(float serwoPos, float AKTspeed) { //mysle o wproawdzeniu z³otego wspo³nycznika bedzie on odpowiadal za wzm. skretu gdyby serwo nie dawlo rade		
-	uint16_t alfa;
-	
-	alfa = serwoPos * 100.0; //pozycja serwa jest podawana o -1 do 1 skaluje w ten sposób do k¹ta skrêtu (TO TRZEBA JESZCZE DOWIADCZALNIE WYZNACZYC ALFA=ALFAW-ALFAZ nie wiem jak to sie ma do skretu serawa) 
-	alfa -= 50;
+	int alfa;
 
 	if (serwoPos >= 0) {		//skrêt w prawo
+		alfa = serwoPos * 90.0; //pozycja serwa jest podawana o -1 do 1 skaluje w ten sposób do k¹ta skrêtu (TO TRZEBA JESZCZE DOWIADCZALNIE WYZNACZYC ALFA=ALFAW-ALFAZ nie wiem jak to sie ma do skretu serawa) 
+
 		TFC_SetMotorPWM(AKTspeed,
 				AKTspeed * ((1 - 0.5 * tg(alfa)) / (1 + 0.5 * tg(alfa))));
 	}
 
 	if (serwoPos < 0) {		//skrêt w lewo
+		alfa = serwoPos * 90.0; //pozycja serwa jest podawana o -1 do 1 skaluje w ten sposób do k¹ta skrêtu (TO TRZEBA JESZCZE DOWIADCZALNIE WYZNACZYC ALFA=ALFAW-ALFAZ nie wiem jak to sie ma do skretu serawa) 
 		alfa = -alfa;
+
 		TFC_SetMotorPWM(
 				AKTspeed * ((1 - 0.5 * tg(alfa)) / (1 + 0.5 * tg(alfa))),
 				AKTspeed);
