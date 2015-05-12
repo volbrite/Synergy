@@ -11,6 +11,5 @@ Project_Settings/Debugger/mass_erase_kinetis.tcl
 Project_Headers/derivative.h
 Project_Headers/MKL25Z4.h
 Sources/sa_mtb.c
-Project_Headers/bme.h
 .settings/com.freescale.core.ide.newprojectwizard.prefs
 ReferencedRSESystems.xml
